@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PoE Price Check</title>
+<meta name="description" content="Price checking overlay for Path of Exile: hover an item, press a key, see the listings of the official trade site. One Windows executable, unofficial.">
+<link rel="icon" href="icon.png">
+<style>
+  :root {
+    --bg: #101114;
+    --panel: #17181c;
+    --line: #2a2c33;
+    --text: #e8e6e1;
+    --muted: #9a9890;
+    --accent: #d4b170;
+    --accent-ink: #2a1f0a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 16px 72px; }
+  header { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  header img { width: 88px; height: 88px; }
+  h1 { margin: 0; font-size: 40px; letter-spacing: -0.5px; }
+  .tagline { margin: 4px 0 0; color: var(--muted); font-size: 18px; }
+  .actions { margin: 32px 0 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .button {
+    display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600;
+    text-decoration: none; border: 1px solid var(--accent);
+  }
+  .button.primary { background: var(--accent); color: var(--accent-ink); }
+  .button.ghost { color: var(--accent); }
+  .note { color: var(--muted); font-size: 14px; }
+  .shots { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr); gap: 20px; margin: 44px 0; align-items: start; }
+  @media (max-width: 760px) { .shots { grid-template-columns: minmax(0, 1fr); } }
+  figure { margin: 0; }
+  figure img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); display: block; }
+  figcaption { color: var(--muted); font-size: 14px; margin-top: 8px; }
+  h2 { font-size: 24px; margin: 52px 0 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .card h3 { margin: 0 0 6px; font-size: 16px; color: var(--accent); }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  ol, ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  code { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: 14px; }
+  .table { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.png" alt="">
+    <div>
+      <h1>PoE Price Check</h1>
+      <p class="tagline">Hover an item in Path of Exile, press a key, see what it sells for.</p>
+    </div>
+  </header>
+
+  <div class="actions">
+    <a class="button primary" href="https://github.com/Shhu/poe-pricecheck/releases/latest">Download for Windows</a>
+    <a class="button ghost" href="https://github.com/Shhu/poe-pricecheck/releases">All releases</a>
+  </div>
+  <p class="note">One executable, nothing to install. Unofficial tool, not affiliated with Grinding Gear Games.</p>
+
+  <div class="shots">
+    <figure>
+      <img src="price-check.png" alt="Price check of a rare item: its modifiers and pseudo totals as search filters, and the listings of the trade site">
+      <figcaption>A rare item: its modifiers and pseudo totals become search filters.</figcaption>
+    </figure>
+    <figure>
+      <img src="wealth.png" alt="Stash wealth: net worth, value by category and the most valuable items of the stash tabs">
+      <figcaption>Stash wealth: what your stash tabs are worth, and how it changes.</figcaption>
+    </figure>
+  </div>
+
+  <h2>What it does</h2>
+  <div class="grid">
+    <div class="card"><h3>Price check</h3><p>Ctrl+D on an item searches the official trade site with filters built from the item: properties, pseudo totals, modifier tiers, grouped into prefixes and suffixes. Currency, fragments and cards go through the bulk exchange.</p></div>
+    <div class="card"><h3>poe.ninja prices</h3><p>An estimate in chaos or divine orbs next to the listings, its trend over 7 days, the price day by day since the start of the league, and related items a click away.</p></div>
+    <div class="card"><h3>Travel to hideout</h3><p>A click on an instant buyout listing takes you to the seller's hideout, as the trade site's button does.</p></div>
+    <div class="card"><h3>Bench craft test</h3><p>On a rare with a free prefix or suffix, add a crafting bench modifier and see the price with it.</p></div>
+    <div class="card"><h3>Stash wealth</h3><p>Ctrl+Alt+D: the value of your stash tabs by item and category, what came in and went out, your net worth over time, and a farming session with its profit per hour.</p></div>
+    <div class="card"><h3>Item check and maps</h3><p>Ctrl+Alt+F shows an item's details, links to the wiki, PoEDB and Craft of Exile, and a verdict on every map modifier, with stash search regexes.</p></div>
+    <div class="card"><h3>Quick search</h3><p>Alt+F opens a search box over the game: type an item's name, get its poe.ninja price, price check it without having it.</p></div>
+    <div class="card"><h3>Overlay</h3><p>Shift+Space: cheat sheets pinned over the game, the Betrayal board with every Syndicate reward rated, a stopwatch, the Delve grid, chat commands on hotkeys, Ctrl + wheel to switch stash tabs.</p></div>
+    <div class="card"><h3>League content</h3><p>Items and modifiers of the current league are read from the trade site at launch. Heist, timeless jewels, mercenary warrants, Valdo maps, viscera are handled.</p></div>
+    <div class="card"><h3>Guild unique stash</h3><p>Tells whether a unique is already in your guild's unique tab, from the guild stash history.</p></div>
+  </div>
+
+  <h2>Getting started</h2>
+  <ol>
+    <li>Download <code>poe-pricecheck.exe</code> and run it. It waits in the system tray.</li>
+    <li>In Settings, choose the league and paste your <code>POESESSID</code>: it enables instant buyout listings, travel to hideout, the stash wealth, the guild stash and higher request limits.</li>
+    <li>In game, hover an item and press <code>Ctrl+D</code>. Every hotkey can be changed in Settings.</li>
+  </ol>
+  <p class="note">Updates are offered in the app when a new release is published here.</p>
+
+  <h2>Privacy</h2>
+  <p>No account of ours, no telemetry. The program only talks to these services:</p>
+  <div class="table">
+  <table>
+    <tr><th>Service</th><th>What for</th><th>What is sent</th></tr>
+    <tr><td>pathofexile.com</td><td>Trade searches, leagues, travel to hideout, your stash tabs, guild stash history</td><td>Your search; your <code>POESESSID</code> as a cookie, if you set one</td></tr>
+    <tr><td>poe.ninja</td><td>Price estimates</td><td>The league name and the item looked up</td></tr>
+    <tr><td>web.poecdn.com</td><td>Item pictures</td><td>Nothing but the picture address, no cookie</td></tr>
+    <tr><td>github.com</td><td>Update check</td><td>Nothing but the request for the latest release</td></tr>
+  </table>
+  </div>
+  <p>The <code>POESESSID</code> and the settings are kept in the Windows Credential Manager and are only ever sent to pathofexile.com. The program reads items through the clipboard (it sends Ctrl+C to the game, as a player would): it does not read the game's memory nor inject anything into it.</p>
+
+  <footer>
+    <p>PoE Price Check is an unofficial tool. This product isn't affiliated with or endorsed by Grinding Gear Games in any way.</p>
+    <p>Game data and price check rules come from <a href="https://github.com/SnosMe/awakened-poe-trade">Awakened PoE Trade</a> (MIT). Prices from <a href="https://poe.ninja">poe.ninja</a>.</p>
+  </footer>
+</main>
+</body>
+</html>
